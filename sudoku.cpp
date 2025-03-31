@@ -1,3 +1,4 @@
+#include <iostream>
 // Anthony Schnuriger
 // Eventually creating a sudoku solving game
 using namespace std;
@@ -21,6 +22,34 @@ bool numSafe(vector<vector<int>>& grid, int row, int col, int num) {
             }
         }
     }
+    return true;
+}
+
+bool solve(vector<vector<int>>& grid, int row, int col) {
+    int size = grid.size();
+    if (row == size - 1 && col == size) {
+        return true;
+    }
+
+    if (col == size) {
+        row++;
+        col = 0;
+    }
+
+    if (grid[row][col] != 0) {
+        return solve(grid, row, col + 1);
+    }
+
+    for (int i = 1; i <= size; i++) {
+        if (numSafe(grid, row, col, i)) {
+            grid[row][col] = i;
+            if (solve(grid, row, col + 1)) {
+                return true;
+            }
+            grid[row][col] = 0;
+        }
+    }
+    return false;
 }
 
 int main(){
@@ -37,4 +66,12 @@ int main(){
     {0, 0, 0, 0, 0, 0, 0, 7, 4},
     {0, 0, 5, 2, 0, 6, 3, 0, 0}};
 
+    solve(matrix, 0, 0);
+    for (int i = 0; i < matrix.size(); i++) {
+        for (int j = 0; j < matrix.size(); j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return 0;
 }
