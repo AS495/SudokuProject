@@ -53,10 +53,22 @@ bool solve(vector<vector<int>>& grid, int row, int col) {
     return false;
 }
 
+ vector<vector<int>> replaceNum(vector<vector<int>>& grid, vector<vector<int>>& sol, int row, int col, int num) {
+    if (grid[row][col] == 0) {
+        if (sol[row][col] == num) {
+            grid[row][col] = num;
+        } else {
+            cout << "Invaild Number, Try again!" << endl;
+        }
+    } else {
+        cout << "Already has a number!" << endl;
+    }
+    return grid;
+}
+
 int main(){
   vector<vector<int>> matrix;
   // Example Matrix can and will be changed
-  // Test dev
   matrix = {
     {5, 0, 0, 0, 7, 0, 3, 6, 0},
     {0, 0, 1, 6, 0, 4, 0, 8, 0},
@@ -67,13 +79,28 @@ int main(){
     {9, 2, 0, 1, 4, 3, 0, 0, 0},
     {0, 0, 0, 7, 0, 0, 1, 3, 8},
     {7, 1, 3, 0, 0, 0, 0, 0, 0}};
+    vector<vector<int>> solvedMatrix = matrix;
+    solve(solvedMatrix, 0, 0);
 
-    solve(matrix, 0, 0);
-    for (int i = 0; i < matrix.size(); i++) {
-        for (int j = 0; j < matrix.size(); j++) {
-            cout << matrix[i][j] << " ";
+    bool game = true;
+    int counter = 0;
+    int row, col, n;
+    while (game) {
+
+        for (int i = 0; i < matrix.size(); i++) {
+            for (int j = 0; j < matrix.size(); j++) {
+                cout << matrix[i][j] << " ";
+                if (matrix[i][j] == 0) {counter++;}
+            }
+            cout << endl;
         }
-        cout << endl;
+        if (counter == 0){return 0;}
+        counter = 0;
+        cout << "Enter a row, col, and number" << endl;
+        cin >> row;
+        cin >> col;
+        cin >> n;
+        matrix = replaceNum(matrix, solvedMatrix, row, col, n);
     }
-    return 0;
+
 }
