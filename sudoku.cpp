@@ -85,7 +85,7 @@ int main(){
     bool game = true;
     int counter = 0;
     int row, col, n;
-
+    while (game) {
         for (int i = 0; i < matrix.size(); i++) {
             for (int j = 0; j < matrix.size(); j++) {
                 cout << matrix[i][j] << " ";
@@ -100,5 +100,5 @@ int main(){
         cin >> col;
         cin >> n;
         matrix = replaceNum(matrix, solvedMatrix, row-1, col-1, n);
-
+    }
 }
