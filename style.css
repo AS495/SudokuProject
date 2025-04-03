@@ -1,10 +1,17 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f8f8f8;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-transform: uppercase;
 }
 
 .sudoku-container {
@@ -26,12 +33,23 @@ body {
     background-color: white;
 }
 
+/* Thicker borders for 3x3 sections */
 .sudoku-cell:nth-child(3n) {
     border-right: 2px solid black;
 }
 
-.sudoku-cell:nth-child(27n) ~ .sudoku-cell {
+.sudoku-cell:nth-child(9n+1) {
+    border-left: 2px solid black;
+}
+
+.sudoku-cell:nth-child(n+19):nth-child(-n+27),
+.sudoku-cell:nth-child(n+46):nth-child(-n+54),
+.sudoku-cell:nth-child(n+73):nth-child(-n+81) {
     border-bottom: 2px solid black;
+}
+
+.sudoku-cell:nth-child(-n+9) {
+    border-top: 2px solid black;
 }
 
 .sudoku-cell input {
@@ -41,4 +59,5 @@ body {
     font-size: inherit;
     border: none;
     outline: none;
+    background-color: white;
 }
