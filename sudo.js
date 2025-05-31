@@ -36,7 +36,8 @@ function numSafe(grid, row, col, num) {
 }
 
 function solve(grid, row = 0, col = 0) {
-  if (row === 8 && col === 9) return true;
+  if (row === 8 && col === 9) 
+    return true;
   if (col === 9) {
     row++;
     col = 0;
