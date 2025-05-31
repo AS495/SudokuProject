@@ -72,7 +72,60 @@ function createBoard() {
         input.classList.add("prefilled");
       }
 
+      boardContainer.appendChild(input);
     }
   }
 }
+
+function getUserBoard() {
+  let userBoard = [];
+  const inputs = document.querySelectorAll("#board input");
+  for (let i = 0; i < 9; i++) {
+    userBoard[i] = [];
+    for (let j = 0; j < 9; j++) {
+      const input = inputs[i * 9 + j];
+      const val = parseInt(input.value);
+      if (isNaN(val)) {
+            userBoard[i][j] = 0;
+        } else {
+            userBoard[i][j] = val;
+        }
+
+    }
+  }
+  return userBoard;
+}
+
+function checkBoard() {
+  let userBoard = getUserBoard();
+  let message = document.getElementById("message");
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      if (userBoard[i][j] !== solvedBoard[i][j]) {
+        message.textContent = "There are mistakes. Keep trying!";
+        return;
+      }
+    }
+  }
+  message.textContent = "Congratulations! You solved the puzzle!";
+}
+
+
+function solveBoard() {
+  const boardContainer = document.getElementById("board");
+  const inputs = boardContainer.querySelectorAll("input");
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const input = inputs[i * 9 + j];
+      input.value = solvedBoard[i][j];
+      input.disabled = true;
+    }
+  }
+
+  const message = document.getElementById("message");
+  message.textContent = "Puzzle solved!";
+}
+
 window.onload = createBoard;
