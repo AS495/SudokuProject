@@ -1,5 +1,3 @@
-// Anthony Schnuriger
-
 let board = [
   [0, 0, 0, 2, 6, 0, 7, 0, 1],
   [6, 8, 0, 0, 7, 0, 0, 9, 0],
@@ -13,6 +11,7 @@ let board = [
 ];
 
 let solvedBoard = JSON.parse(JSON.stringify(board));
+solve(solvedBoard); 
 
 function numSafe(grid, row, col, num) {
   for (let i = 0; i < 9; i++) {
@@ -36,8 +35,7 @@ function numSafe(grid, row, col, num) {
 }
 
 function solve(grid, row = 0, col = 0) {
-  if (row === 8 && col === 9) 
-    return true;
+  if (row === 8 && col === 9) return true;
   if (col === 9) {
     row++;
     col = 0;
@@ -56,16 +54,25 @@ function solve(grid, row = 0, col = 0) {
   return false;
 }
 
-function replaceNum(userGrid, solutionGrid, row, col, num) {
-  if (userGrid[row][col] === 0) {
-    if (solutionGrid[row][col] === num) {
-      userGrid[row][col] = num;
-      console.log("Correct!");
-    } else {
-      console.log("Invalid number, try again!");
+function createBoard() {
+  const boardContainer = document.getElementById("board");
+  boardContainer.innerHTML = "";
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.maxLength = 1;
+      input.dataset.row = i;
+      input.dataset.col = j;
+
+      if (board[i][j] !== 0) {
+        input.value = board[i][j];
+        input.disabled = true;
+        input.classList.add("prefilled");
+      }
+
     }
-  } else {
-    console.log("Already filled!");
   }
-  return userGrid;
 }
+window.onload = createBoard;
