@@ -122,7 +122,7 @@ function solveBoard() {
       input.value = solvedBoard[i][j];
       input.disabled = true;
     }
-  }
+  } 
 
   const message = document.getElementById("message");
   message.textContent = "Puzzle solved!";

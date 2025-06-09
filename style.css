@@ -11,9 +11,11 @@ h1 {
 #board {
   display: grid;
   grid-template-columns: repeat(9, 40px);
-  gap: 2px;
+  grid-template-rows: repeat(9, 40px);
+  gap: 0;
   margin: 20px auto;
   width: fit-content;
+  border: 3px solid #000;
 }
 
 input {
@@ -21,6 +23,9 @@ input {
   height: 40px;
   text-align: center;
   font-size: 18px;
+  border: 1px solid #999;
+  background-color: white;
+  box-sizing: border-box;
 }
 
 .prefilled {
@@ -29,9 +34,21 @@ input {
 }
 
 .box-right {
-  border-right: 2px solid black;
+  border-right: 3px solid #000;
 }
 
 .box-bottom {
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid #000;
+}
+
+button {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#message {
+  margin-top: 20px;
+  font-weight: bold;
 }
