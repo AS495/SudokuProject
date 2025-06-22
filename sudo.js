@@ -72,6 +72,14 @@ function createBoard() {
         input.classList.add("prefilled");
       }
 
+      if ((j + 1) % 3 === 0 && j !== 8) {
+        input.classList.add("box-right");
+      }
+      if ((i + 1) % 3 === 0 && i !== 8) {
+        input.classList.add("box-bottom");
+      }
+
+
       boardContainer.appendChild(input);
     }
   }
