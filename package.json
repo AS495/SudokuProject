@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node-fetch": "^2.7.0"
+  },
+  "name": "sudokuproject",
+  "version": "1.0.0",
+  "description": "End goal of project is to create a working Sudoku game with working website.",
+  "main": "proxy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AS495/SudokuProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AS495/SudokuProject/issues"
+  },
+  "homepage": "https://github.com/AS495/SudokuProject#readme"
+}
