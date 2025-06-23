@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3001;
 
 app.use(cors());
-app.get('/sudoku', async (req, res) => {
+app.get('/sudoku', async (res) => {
   try {
     const response = await fetch('https://api.api-ninjas.com/v1/sudokugenerate?difficulty=easy', {
       headers: { 'X-Api-Key': 'Qxk0Kw+T+u+QogACUbRzkw==5VGzgAgrYJWQZMzm' }
