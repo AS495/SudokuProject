@@ -153,4 +153,4 @@ function solveBoard() {
   message.textContent = "Puzzle solved!";
 }
 
-window.onload = createBoard;
+window.onload = fetchSudoku();
