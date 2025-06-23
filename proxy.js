@@ -9,7 +9,7 @@ app.use(cors());
 app.get('/sudoku', async (res) => {
   try {
     const response = await fetch('https://api.api-ninjas.com/v1/sudokugenerate?difficulty=easy', {
-      headers: { 'X-Api-Key': 'Qxk0Kw+T+u+QogACUbRzkw==5VGzgAgrYJWQZMzm' }
+      headers: { 'X-Api-Key': 'API-KEY' }
     });
     if (!response.ok) {
       console.error('API error:', response.status, await response.text());
